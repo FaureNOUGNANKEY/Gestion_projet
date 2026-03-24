@@ -202,5 +202,5 @@ Le schéma contient les tables suivantes :
 
 ## Auteur
 
-Développé par **[Ton Nom]**  
-Contact : [ton@email.com]
+Développé par **NOUGNANKEY Faure dit codeur de la jungle**  
+Contact : na5yfaure@gmail.com
