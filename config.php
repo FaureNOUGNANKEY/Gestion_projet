@@ -1,4 +1,5 @@
 <?php
+define("BASE_URL", "/PHP_WEB/Gestion_project/");
 class Connection {
     private $host = "localhost";
     private $port= '3306';

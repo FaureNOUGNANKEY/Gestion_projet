@@ -1,3 +1,22 @@
+<?php 
+include __DIR__ . '/../controller/AuthController.php';
+include __DIR__ . '/../includes/auth_check.php';
+
+?>
+<?php
+function getInitiales($nom) {
+    $mots = explode(' ', trim($nom));
+    $initiales = '';
+    foreach ($mots as $mot) {
+        $initiales .= strtoupper(mb_substr($mot, 0, 1));
+    }
+    return substr($initiales, 0, 2);
+}
+
+$userName = $_SESSION['user_name'] ;//?? 'Jean Dupont';
+$userRole = $_SESSION['user_role'] ;//?? 'Administrateur';
+$initiales = getInitiales($userName);
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,19 +41,19 @@
         <!-- Navigation -->
         <ul class="nav flex-column gap-1 flex-grow-1">
             <li class="nav-item">
-                <a href="dashboard.php" class="nav-link d-flex align-items-center gap-2 rounded px-3 py-2 bg-primary text-white">
+                <a href="<?php echo BASE_URL; ?>views/dashboard.php" class="nav-link d-flex align-items-center gap-2 rounded px-3 py-2 bg-primary text-white">
                     <i class="bi bi-grid"></i>
                     Tableau de bord
                 </a>
             </li>
             <li class="nav-item">
-                <a href="projects/list.php" class="nav-link d-flex align-items-center gap-2 rounded px-3 py-2 text-white-50">
+                <a href="<?php echo BASE_URL; ?>views/projects/list.php" class="nav-link d-flex align-items-center gap-2 rounded px-3 py-2 text-white-50">
                     <i class="bi bi-briefcase"></i>
                     Projets
                 </a>
             </li>
             <li class="nav-item">
-                <a href="tasks/list.php" class="nav-link d-flex align-items-center gap-2 rounded px-3 py-2 text-white-50">
+                <a href="<?php echo BASE_URL; ?>tasks/list.php" class="nav-link d-flex align-items-center gap-2 rounded px-3 py-2 text-white-50">
                     <i class="bi bi-check-square"></i>
                     Mes Tâches
                 </a>
@@ -63,7 +82,7 @@
 
     <div class="d-flex flex-column flex-grow-1"> 
         <nav class="navbar bg-white border-bottom px-4">
-            <span class="navbar-brand fw-semibold">Tableau de bord</span>
+            <span class="navbar-brand fw-semibold"><?php echo $pageTitle; ?></span>
 
             <div class="d-flex align-items-center gap-3">
                 <div class="text-end">

@@ -1,3 +1,7 @@
+<?php 
+    include __DIR__. '/../../includes/auth_check.php';
+    include __DIR__.'/../../controller/ProjectController.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

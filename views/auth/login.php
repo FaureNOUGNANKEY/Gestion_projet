@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include __DIR__ . '../../controller/AuthController';
+include __DIR__ . '/../../controller/AuthController.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
