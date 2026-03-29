@@ -1,6 +1,6 @@
 <?php 
-include __DIR__ . '/../controller/AuthController.php';
-include __DIR__ . '/../includes/auth_check.php';
+include_once __DIR__ . '/../controller/AuthController.php';
+include_once __DIR__ . '/../includes/auth_check.php';
 
 ?>
 <?php
@@ -13,8 +13,8 @@ function getInitiales($nom) {
     return substr($initiales, 0, 2);
 }
 
-$userName = $_SESSION['user_name'] ;//?? 'Jean Dupont';
-$userRole = $_SESSION['user_role'] ;//?? 'Administrateur';
+$userName = $_SESSION['user_name'] ;
+$userRole = $_SESSION['user_role'] ;
 $initiales = getInitiales($userName);
 ?>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ $initiales = getInitiales($userName);
 </head>
 <body>
 <div class="d-flex vh-100">
-    <div class="d-flex flex-column bg-dark text-white vh-100 p-3" style="width: 260px;">
+    <div class="d-flex flex-column bg-dark text-white vh-200 p-3" style="width: 260px;">
 
         <!-- Logo -->
         <div class="d-flex align-items-center gap-2 mb-4 pb-3 border-bottom border-secondary">
@@ -60,7 +60,7 @@ $initiales = getInitiales($userName);
             </li>
             <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin'): ?>
             <li class="nav-item">
-                <a href="users/list.php" class="nav-link d-flex align-items-center gap-2 rounded px-3 py-2 text-white-50" name="action" value="logout">
+                <a href="<?php echo BASE_URL; ?>views/users/list.php" class="nav-link d-flex align-items-center gap-2 rounded px-3 py-2 text-white-50">
                     <i class="bi bi-people"></i>
                     Utilisateurs
                 </a>

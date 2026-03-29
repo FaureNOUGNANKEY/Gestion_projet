@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'Tableau de bord';
-include __DIR__ . '/../includes/header.php';
+include_once __DIR__ . '/../includes/header.php';
 ?>
     <!-- Contenu spécifique au dashboard -->
     <div class="row g-3">

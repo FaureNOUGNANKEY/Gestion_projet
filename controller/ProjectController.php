@@ -1,6 +1,6 @@
 <?php 
-    include __DIR__ . '/../models/ProjectModel.php';
-    include __DIR__ . '/../config.php';
+    include_once __DIR__ . '/../models/ProjectModel.php';
+    include_once __DIR__ . '/../config.php';
 
     $conn = new Connection();
     $db = $conn->getConnection();

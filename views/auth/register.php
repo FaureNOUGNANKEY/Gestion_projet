@@ -1,7 +1,5 @@
-<?php 
-//include __DIR__ . '/../../includes/auth_check.php';
-
-include __DIR__ . '/../../controller/AuthController.php';
+<?php
+include_once __DIR__ . '/../../controller/AuthController.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">

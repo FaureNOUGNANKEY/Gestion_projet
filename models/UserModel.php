@@ -8,6 +8,7 @@ class User {
     public $name;
     public $email;
     public $password;
+    public $role;
     public $id;
 
     public function __construct($db) {
@@ -44,7 +45,7 @@ class User {
             $sql = "SELECT * FROM users WHERE id = ?;";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([$this->id]);
-            return $stmt->fetch();
+            return $stmt->fetchall();
         } catch (Exception $e) {
             return false;
         }
@@ -64,11 +65,17 @@ class User {
 
     public function updateUser(){
         try{
-            $sql = 'UPDATE USERS SET name=?, email=? , password=? where id=?;';
+            $sql = 'UPDATE USERS SET name=?, email=? , role=? where id=?;';
             $stmt=$this->conn->prepare($sql);
             $stmt->execute(
-                array($this->id)
+                array(
+                    $this->name,
+                    $this->email,
+                    $this->role,
+                    $this->id
+                )
             );
+            return $stmt->rowCount() > 0;
         }catch (Exception $e){
             die("ERREUR". $e->getMessage());
         }
@@ -81,6 +88,7 @@ class User {
             $stmt->execute(
                 array($this->id)
             );
+            return $stmt->rowCount() > 0;
         }catch (Exception $e){
             die("ERREUR". $e->getMessage());
         }   

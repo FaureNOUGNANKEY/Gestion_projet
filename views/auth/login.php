@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include __DIR__ . '/../../controller/AuthController.php';
+include_once __DIR__ . '/../../controller/AuthController.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -24,12 +24,18 @@ include __DIR__ . '/../../controller/AuthController.php';
 <body class="d-flex justify-content-center align-items-center min-vh-100 bg-white">
     <div class="w-100" style="max-width: 400px;" id="container">
         <h3 class="text-center">Connexion</h3>
-        <?php if(isset($_GET['msg'])){ ?>
-            <div class="alert alert-success" role="alert">
-                <?php echo $_GET['msg']; ?>
-            </div>
-        <?php } ?>
-
+        <?php if(isset($_GET['msg'])){ 
+            if ($_GET['msg'] == "Email ou mot de passe incorrect.") {
+                echo '<div class="alert alert-danger" role="alert">'
+                    .$_GET['msg']
+                .'</div>';
+            }else{
+                echo '<div class="alert alert-success" role="alert">'
+                    .$_GET['msg'].
+                '</div>';
+            } 
+        }   
+        ?>
         <form action="#" method="post">
             <input type="text" name="action" value="login" hidden>
             <div class="mb-3">
@@ -43,7 +49,11 @@ include __DIR__ . '/../../controller/AuthController.php';
             <div>
                 <button type="submit" class="btn btn-primary w-100">Se connecté</button>
             </div>
-
+            <br>
+            <div>
+                <p>Vous n'avez pas de compte?</p>
+                <button class="btn btn-primary w-100"><a href="register.php" class="text-white text-decoration-none">S'inscrire</a></button>
+            </div>
         </form>
     </div>
     
