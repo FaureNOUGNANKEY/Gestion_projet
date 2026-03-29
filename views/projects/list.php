@@ -1,6 +1,6 @@
 <?php 
     $pageTitle = 'Liste des projets';
-    include __DIR__ . '/../../includes/header.php';
+    include_once __DIR__ . '/../../includes/header.php';
 ?>
 
     <!-- contenue de spécifique de projectlist -->

@@ -1,6 +1,6 @@
 <?php 
-    include __DIR__. '/../../includes/auth_check.php';
-    include __DIR__.'/../../controller/ProjectController.php';
+    include_once __DIR__. '/../../includes/auth_check.php';
+    include_once __DIR__.'/../../controller/ProjectController.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">

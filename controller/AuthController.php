@@ -1,6 +1,6 @@
 <?php
-include __DIR__ . '/../config.php';
-include __DIR__ . '/../models/UserModel.php';
+include_once __DIR__ . '/../config.php';
+include_once __DIR__ . '/../models/UserModel.php';
 
 $conn = new Connection();
 $db = $conn->getConnection();
