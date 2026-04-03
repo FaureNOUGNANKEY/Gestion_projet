@@ -20,7 +20,7 @@ CREATE TABLE projects (
         ON DELETE CASCADE
 );
 
-CREATE TABLE project_users (
+CREATE TABLE project_details (
     id INT AUTO_INCREMENT PRIMARY KEY,
     project_id INT NOT NULL,
     user_id INT NOT NULL,

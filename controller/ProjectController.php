@@ -12,21 +12,38 @@
 
                 $p->title = htmlspecialchars(trim($_POST['title']));
                 $p->description = htmlspecialchars(trim($_POST['description']));
-                $p->owner_id = htmlspecialchars(trim($_POST['owner_id']));
+                $p->owner_id = htmlspecialchars(trim($_SESSION['user_id']));
 
                 $result = $p->createProject();
                 if ($result === true) {
-                    $msg = "Projet créer";
-                    header('Location: create.php?msg='.$msg);
+                    $msg = "Projet créé";
+                    header('Location:list.php?msg='.$msg);
                     exit();
                 } else {
                     return $result;
                 }
 
             }else{
-                $msg='veilleiz remplir tous les champs';
+                $msg='Veuillez remplir tous les champs';
                 return $msg;
             }
         }
+    }
 
+    function getList($db, $user_id){
+        $project = new Project($db);
+        $projets = $project->getByUser($user_id);
+        if (is_array($projets)) {
+            foreach ($projets as &$projet) {
+                $projet['membres'] = $project->getProjectMembers($projet['id']);
+                $projet['role_affiche'] = ($projet['owner_id'] == $user_id) ? 'Admin' : ucfirst($projet['mon_role'] ?? 'Membre');
+            }
+        }
+        
+        return $projets;
+    }
+
+
+    if (isset($_POST['action']) && $_POST['action'] === 'create') {
+        $msg = create($db);
     }

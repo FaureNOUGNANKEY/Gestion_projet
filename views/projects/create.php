@@ -1,6 +1,7 @@
 <?php 
     include_once __DIR__. '/../../includes/auth_check.php';
     include_once __DIR__.'/../../controller/ProjectController.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -24,8 +25,8 @@
 <body class="d-flex justify-content-center align-items-center min-vh-100 bg-white">
     <div class="w-100" style="max-width: 400px;" id="container">
         <h3 class="text-center">Créer un projet</h3>
-        <?php if (!empty($msg)): ?>
-            <div class="alert alert-danger"><?php echo $msg; ?></div>
+        <?php if (!empty($_GET['msg'])): ?>
+            <div class="alert alert-danger"><?php echo $_GET['msg']; ?></div>
         <?php endif; ?>
         <form action="#" method="post">
             <input type="text" name="action" value="create" hidden>
@@ -38,10 +39,10 @@
                 <textarea name="description" id="description" class="form-control" ></textarea>
             </div>
             <br>
-            <input type="text" name="owner_id" value=" <?php $_SESSION['user_id']; ?>" hidden>
+            <input type="number" name="owner_id" value="<?php echo $_SESSION['user_id']; ?>" hidden>
             <div class="d-flex gap-2">
-                <button class="btn btn-primary w-50 ">Créer</button>
-                <button class="btn btn-primary w-50" > <a href="" class="text-white text-decoration-none">Annuler</a> </button>
+                <button class="btn btn-primary w-50 " type="submit">Créer</button>
+                <button class="btn btn-primary w-50" > <a href="list.php" class="text-white text-decoration-none">Annuler</a> </button>
             </div>
         </form>
     </div>

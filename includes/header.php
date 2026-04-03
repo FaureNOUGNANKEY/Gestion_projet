@@ -27,8 +27,16 @@ $initiales = getInitiales($userName);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-<div class="d-flex vh-100">
-    <div class="d-flex flex-column bg-dark text-white vh-200 p-3" style="width: 260px;">
+<style>
+    body { margin: 0; height: 100vh; overflow: hidden; }
+    .app-shell { display: flex; height: 100vh; overflow: hidden; }
+    .app-sidebar { position: fixed; top: 0; left: 0; bottom: 0; width: 260px; background: #111827; color: #fff; padding: 1rem; overflow-y: hidden; display: flex; flex-direction: column; }
+    .app-main { margin-left: 260px; width: calc(100% - 260px); height: 100vh; display: flex; flex-direction: column; }
+    .app-navbar { position: fixed; top: 0; left: 260px; right: 0; z-index: 999; background: #fff; border-bottom: 1px solid #dee2e6; padding: .75rem 1rem; }
+    .app-content { margin-top: 62px; padding: 1rem; overflow-y: auto; height: calc(100vh - 62px); }
+</style>
+<div class="app-shell">
+    <div class="app-sidebar">
 
         <!-- Logo -->
         <div class="d-flex align-items-center gap-2 mb-4 pb-3 border-bottom border-secondary">
@@ -37,7 +45,7 @@ $initiales = getInitiales($userName);
             </div>
             <span class="fw-bold fs-5">GestinProj</span>
         </div>
-
+        <br>
         <!-- Navigation -->
         <ul class="nav flex-column gap-1 flex-grow-1">
             <li class="nav-item">
@@ -69,8 +77,8 @@ $initiales = getInitiales($userName);
         </ul>
 
         <!-- Déconnexion -->
-        <div class="border-top border-secondary pt-3">
-            <form action="auth/logout.php" method="post">
+        <div class="border-top border-secondary pt-3 mt-auto">
+            <form action="<?php echo BASE_URL; ?>views/auth/logout.php" method="post">
                 <input type="hidden" name="action" value="logout">
                 <button type="submit" class="nav-link d-flex align-items-center gap-2 rounded px-3 py-2 text-white-50 border-0 bg-transparent w-100">
                     <i class="bi bi-box-arrow-right"></i> Déconnexion
@@ -80,10 +88,9 @@ $initiales = getInitiales($userName);
         </div>
     </div>
 
-    <div class="d-flex flex-column flex-grow-1"> 
-        <nav class="navbar bg-white border-bottom px-4">
-            <span class="navbar-brand fw-semibold"><?php echo $pageTitle; ?></span>
-
+    <div class="app-main">
+        <nav class="app-navbar d-flex justify-content-between align-items-center">
+            <span class="navbar-brand fw-semibold"><?php echo $pageTitle ?? 'Tableau de bord'; ?></span>
             <div class="d-flex align-items-center gap-3">
                 <div class="text-end">
                     <div class="fw-semibold small"><?php echo htmlspecialchars($userName); ?></div>
@@ -96,4 +103,4 @@ $initiales = getInitiales($userName);
             </div>
         </nav>
         <!-- contenue -->
-        <main class="p-4">
+        <main class="app-content bg-primary bg-opacity-10">
