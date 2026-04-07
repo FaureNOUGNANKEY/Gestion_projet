@@ -1,6 +1,6 @@
 <?php 
-    include_once . __DIR__ . '/../../controller/TaskController.php';
-    include_once . __DIR__ . '/../../includes/auth_check.php';
+    include_once  __DIR__ . '/../../controller/TaskController.php';
+    include_once  __DIR__ . '/../../includes/auth_check.php';
 
 
 
